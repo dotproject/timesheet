@@ -1,4 +1,4 @@
-<?php /* $Id: setup.php,v 1.1 2003/10/01 19:35:55 bret Exp $ */
+<?php /* $Id: setup.php,v 1.1.1.1 2003/12/04 17:53:45 iexposure Exp $ */
 /*
 dotProject Module
 
@@ -28,7 +28,7 @@ if (@$a == 'setup') {
 	echo dPshowModuleConfig( $config );
 }
 
-require_once( $AppUI->cfg['root_dir'].'/modules/system/syskeys/syskeys.class.php' );
+require_once dPgetConfig( 'root_dir' ).'/modules/system/syskeys/syskeys.class.php';
 
 /*
 // MODULE SETUP CLASS
@@ -61,7 +61,7 @@ class CSetupTimesheet {
 		$sv->store();
 		$sv = new CSysVal( 1, 'WorkCategory', "0|Programming\n1|Design" );
 		$sv->store();
-		return null;
+		return true;
 	}
 /*
 	Removal routine
@@ -73,13 +73,13 @@ class CSetupTimesheet {
 		//$sql = "DELETE FROM sysvals WHERE sysval_title = 'BillingCategory' or sysval_title = 'WorkCategory'";
 		//db_exec( $sql );
 
-		return null;
+		return true;
 	}
 /*
 	Upgrade routine
 */
 	function upgrade() {
-		return null;
+		return true;
 	}
 }
 
